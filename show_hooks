@@ -1,0 +1,13 @@
+add_action( 'all', 'th_show_all_hooks' );
+	
+function th_show_all_hooks( $tag ) {
+	if(!(is_admin())){ // Display Hooks in front end pages only
+		$debug_tags = array();
+		global $debug_tags;
+		if ( in_array( $tag, $debug_tags ) ) {
+			return;
+		}
+		echo "<pre>" . $tag . "</pre>";
+		$debug_tags[] = $tag;
+	}
+}
